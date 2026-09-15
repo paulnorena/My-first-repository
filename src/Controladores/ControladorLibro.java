@@ -31,6 +31,10 @@ public class ControladorLibro
         }
         return null;
     }
+    public ArrayList<Libro> listarLibros()
+    {
+        return libros;
+    }
     
     public boolean guardar(Libro l)
     {

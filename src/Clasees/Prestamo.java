@@ -4,6 +4,8 @@
  */
 package Clasees;
 
+import Controladores.ControladorCliente;
+import Controladores.ControladorLibro;
 import java.time.LocalDate;
 
 /**
@@ -12,56 +14,40 @@ import java.time.LocalDate;
  */
 public class Prestamo 
 {
-    private int idPrestamo;
     private LocalDate fechaPrestamo;
     private Cliente cliente; 
     private Libro libro;
 
-    public Prestamo(int idPrestamo, LocalDate fechaPrestamo, Cliente cliente, Libro libro)
+    public Prestamo(Cliente cliente, Libro libro)
     {
-        this.idPrestamo = idPrestamo;
-        this.fechaPrestamo = fechaPrestamo;
+        fechaPrestamo = LocalDate.now();
         this.cliente = cliente;
         this.libro = libro;
     }
 
-    public int getIdPrestamo() 
+    public boolean validarPrestamo()
     {
-        return idPrestamo;
+        if(cliente.isTieneLibroEnPrestamo() == false && libro.isEstado() == false)
+        {
+            cliente.setTieneLibroEnPrestamo(true);
+            libro.setEstado(true);
+            return true;
+        }
+        return false;
     }
 
-    public void setIdPrestamo(int idPrestamo) 
-    {
-        this.idPrestamo = idPrestamo;
-    }
-
-    public LocalDate getFechaPrestamo() 
+    public LocalDate getFechaPrestamo()
     {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(LocalDate fechaPrestamo) 
-    {
-        this.fechaPrestamo = fechaPrestamo;
-    }
-
-    public Cliente getCliente() 
+    public Cliente getCliente()
     {
         return cliente;
-    }
-
-    public void setCliente(Cliente cliente)
-    {
-        this.cliente = cliente;
     }
 
     public Libro getLibro()
     {
         return libro;
-    }
-
-    public void setLibro(Libro libro)
-    {
-        this.libro = libro;
     }
 }
