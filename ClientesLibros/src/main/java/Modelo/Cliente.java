@@ -11,11 +11,11 @@ package Modelo;
 public class Cliente {
     private int id;
     private String nombre;
-    private int telefono;
+    private long telefono;
     private String direccion;
     private boolean tieneLibroEnPrestamo;
 
-    public Cliente(int id, String nombre, int telefono, String direccion, boolean tieneLibroEnPrestamo) {
+    public Cliente(int id, String nombre, long telefono, String direccion, boolean tieneLibroEnPrestamo) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -40,11 +40,11 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
