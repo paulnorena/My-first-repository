@@ -8,7 +8,10 @@ package Clasees;
  *
  * @author jeanp
  */
-public class Libro 
+
+import java.io.Serializable;
+import java.util.ArrayList;
+public class Libro implements Serializable
 {
     private int idLibro;
     private String titulo;
@@ -17,6 +20,7 @@ public class Libro
     private int publicacion;
     private String[] categoria = {"Literatura", "Ciencia", "Historia", "Tecnologia"};
     private boolean estado;
+    private ArrayList<Cliente> reservas = new ArrayList<>();
 
     public Libro(int idLibro, String titulo, String autor, String editorial, int publicacion, boolean estado) 
     {
@@ -90,6 +94,11 @@ public class Libro
     public void setEstado(boolean estado) 
     {
         this.estado = estado;
+    }
+    
+     public ArrayList<Cliente> getReservas()
+    {
+        return reservas;
     }
     
     

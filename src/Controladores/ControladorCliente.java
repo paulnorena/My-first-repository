@@ -18,6 +18,9 @@ public class ControladorCliente {
     public ControladorCliente(){
         listaClientes = new ArrayList<>();
     }
+    public ControladorCliente(ArrayList<Cliente> clientes) {
+    listaClientes = clientes;
+}
     
     // ====== CRUD =======
     
@@ -62,12 +65,25 @@ public class ControladorCliente {
     public boolean eliminarCliente(int id){
         for(int i = 0; i < listaClientes.size(); i +=1){
             if(listaClientes.get(i).getId() == id){
+                listaClientes.remove(i);
                 return true;
             }
         }return false;
     }
     
+    public double consultarMultasPendientes(int id) {
+        Cliente cliente = buscarCliente(id);
+
+        if (cliente != null) {
+            return cliente.getMultasPendientes();
+        }
+
+        return -1;
+    }
     
+    public ArrayList<Cliente> listarClientes() {
+    return listaClientes;
+}
     
     
 }

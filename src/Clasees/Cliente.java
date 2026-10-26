@@ -4,16 +4,20 @@
  */
 package Clasees;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Juan
  */
-public class Cliente {
+
+public class Cliente implements Serializable{
     private int id;
     private String nombre;
     private long telefono;
     private String direccion;
     private boolean tieneLibroEnPrestamo;
+    private double multasPendientes;
 
     public Cliente(int id, String nombre, long telefono, String direccion, boolean tieneLibroEnPrestamo) {
         this.id = id;
@@ -21,6 +25,7 @@ public class Cliente {
         this.telefono = telefono;
         this.direccion = direccion;
         this.tieneLibroEnPrestamo = tieneLibroEnPrestamo;
+        this.multasPendientes = 0;
     }
 
     public int getId() {
@@ -64,6 +69,12 @@ public class Cliente {
         this.tieneLibroEnPrestamo = tieneLibroEnPrestamo;
     }
 
+    public double getMultasPendientes(){
+        return multasPendientes;
+    }
     
+    public void setMultasPendientes(double multasPendientes){
+        this.multasPendientes = multasPendientes;
+    }
     
 }

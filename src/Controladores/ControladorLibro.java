@@ -4,6 +4,7 @@
  */
 package Controladores;
 
+import Clasees.Cliente;
 import Clasees.Libro;
 import java.util.ArrayList;
 
@@ -19,6 +20,10 @@ public class ControladorLibro
     {
         libros = new ArrayList<>();
     }
+    
+    public ControladorLibro(ArrayList<Libro> libros) {
+    this.libros = libros;
+}
     
     public Libro buscar(int id)
     {
@@ -72,5 +77,43 @@ public class ControladorLibro
         }
         return false;
     }
+    
+    
+public boolean registrarReserva(int idLibro, Cliente cliente)
+{
+    Libro libro = buscar(idLibro);
+
+    if(libro == null || cliente == null)
+    {
+        return false;
+    }
+    if(libro.isEstado() == false)
+    {
+        return false;
+    }
+    for(int i = 0; i < libro.getReservas().size(); i++)
+    {
+        if(libro.getReservas().get(i).getId() == cliente.getId())
+        {
+            return false;
+        }
+    }
+
+    libro.getReservas().add(cliente);
+    return true;
+}
+
+public ArrayList<Cliente> consultarReservas(int idLibro)
+{
+    Libro libro = buscar(idLibro);
+
+    if(libro != null)
+    {
+        return libro.getReservas();
+    }
+
+    return new ArrayList<>();
+}
+
     
 }
